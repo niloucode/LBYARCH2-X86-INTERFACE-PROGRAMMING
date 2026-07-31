@@ -111,7 +111,7 @@ void testProgram() {
 
         asmRuntimes = (double*)malloc(iterations * sizeof(*asmRuntimes));
         cRuntimes = (double*)malloc(iterations * sizeof(*cRuntimes));
-        sdot = (double*)malloc(sizeof(sdot));
+        sdot = (double*)malloc(sizeof(*sdot));
 
         for (int j = 0; j < exponentArray[i];j++)
         {
