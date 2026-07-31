@@ -6,11 +6,15 @@
 #include <time.h>
 
 // function declarations
-extern double asm_kernel(int n, double vA[], double vB[]);
-extern double c_kernel(int n, double vA[], double vB[]);
+extern void asm_kernel(int n, double vA[], double vB[], double* sdot);
+extern void c_kernel(int n, double vA[], double vB[], double* sdot);
 
-double getAsmRuntime(int n, double* vectorA, double* vectorB);
-double getCRuntime(int n, double* vectorA, double* vectorB);
+double getAsmRuntime(int n, double* vectorA, double* vectorB, double* sdot);
+double getCRuntime(int n, double* vectorA, double* vectorB, double* sdot);
+
+// since C's "release" is extremely optimized, we need to use a buffer variable like this to keep the result,
+// and keep the timer counting in "release" mode.
+volatile double prevent_optimization;
 
 // Hello sir! Please call the function testProgram() in main if you want to test the program's runtime
 void testProgram();
@@ -26,7 +30,7 @@ int main() {
     char* token;
     double* vectorA = NULL;
     double* vectorB = NULL;
-    double answer = 0.0;
+    double* sdot = NULL;
 
     do {
         if (scanf_s("%c", &ch, (unsigned int)sizeof(ch)) != 1) {
@@ -51,11 +55,13 @@ int main() {
 
     vectorA = (double*)malloc(n * sizeof(*vectorA));
     vectorB = (double*)malloc(n * sizeof(*vectorB));
+    sdot = (double*)malloc(sizeof(sdot));
 
     if (vectorA == NULL || vectorB == NULL) {
         printf("Memory allocation failed.\n");
         free(vectorA);
         free(vectorB);
+        free(sdot);
         return 1;
     }
 
@@ -70,12 +76,13 @@ int main() {
         count++;
     }
 
-    answer = asm_kernel(n, vectorA, vectorB);
+    asm_kernel(n, vectorA, vectorB, sdot);
 
-    printf("Dot Product: %f\n", answer);
+    printf("Dot Product: %f\n", *sdot);
 
     free(vectorA);
     free(vectorB);
+    free(sdot);
 
     return 0;
 }
@@ -100,9 +107,11 @@ void testProgram() {
         int n = 1;
         double* vectorA = NULL;
         double* vectorB = NULL;
+        double* sdot = NULL;
 
         asmRuntimes = (double*)malloc(iterations * sizeof(*asmRuntimes));
         cRuntimes = (double*)malloc(iterations * sizeof(*cRuntimes));
+        sdot = (double*)malloc(sizeof(sdot));
 
         for (int j = 0; j < exponentArray[i];j++)
         {
@@ -122,8 +131,8 @@ void testProgram() {
         for (int j = 0; j < iterations; j++)
         {
             //printf("ITERATION %d:\n", j + 1);
-            asmRuntimes[j] = getAsmRuntime(n,vectorA,vectorB) * 1000;
-            cRuntimes[j] = getCRuntime(n, vectorA, vectorB) * 1000;
+            asmRuntimes[j] = getAsmRuntime(n,vectorA,vectorB, sdot) * 1000;
+            cRuntimes[j] = getCRuntime(n, vectorA, vectorB, sdot) * 1000;
             //printf("RUNTIME: %7fms %7fms\n\n", asmRuntimes[j], cRuntimes[j]);
         }
 
@@ -143,17 +152,17 @@ void testProgram() {
 
         free(vectorA);
         free(vectorB);
+        free(sdot);
 
         free(asmRuntimes);
         free(cRuntimes);
     }
 }
 
-double getAsmRuntime(int n, double* vectorA, double* vectorB) {
-    double answer;
+double getAsmRuntime(int n, double* vectorA, double* vectorB, double* sdot) {
 
     clock_t begin = clock();
-    answer = asm_kernel(n, vectorA, vectorB);
+    asm_kernel(n, vectorA, vectorB, sdot);
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
@@ -161,11 +170,9 @@ double getAsmRuntime(int n, double* vectorA, double* vectorB) {
     return time_spent;
 }
 
-double getCRuntime(int n, double* vectorA, double* vectorB) {
-    double answer;
-
+double getCRuntime(int n, double* vectorA, double* vectorB, double* sdot) {
     clock_t begin = clock();
-    answer = c_kernel(n, vectorA, vectorB);
+    c_kernel(n, vectorA, vectorB, sdot);
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
