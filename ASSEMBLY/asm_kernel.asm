@@ -2,9 +2,9 @@ section .text
 
 	default rel
 	bits 64
-	global multiplier
+	global asm_kernel
 
-	multiplier:	
+	asm_kernel:	
 		XOR rax, rax
 		XORPD xmm0, xmm0 
 		L1:

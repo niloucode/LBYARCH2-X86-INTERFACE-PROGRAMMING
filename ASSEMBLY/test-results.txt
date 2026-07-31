@@ -1,0 +1,85 @@
+
+
+Testing exponent 2^20
+
+RUNTIME for 2^20...
+
+                ASSEMBLY        C
+Test 0:         1.000000ms      4.000000ms
+Test 1:         1.000000ms      3.000000ms
+Test 2:         1.000000ms      3.000000ms
+Test 3:         1.000000ms      3.000000ms
+Test 4:         1.000000ms      3.000000ms
+Test 5:         1.000000ms      4.000000ms
+Test 6:         1.000000ms      3.000000ms
+Test 7:         1.000000ms      3.000000ms
+Test 8:         1.000000ms      3.000000ms
+Test 9:         1.000000ms      4.000000ms
+Test 10:        1.000000ms      3.000000ms
+Test 11:        1.000000ms      3.000000ms
+Test 12:        1.000000ms      4.000000ms
+Test 13:        1.000000ms      3.000000ms
+Test 14:        1.000000ms      3.000000ms
+Test 15:        1.000000ms      4.000000ms
+Test 16:        1.000000ms      3.000000ms
+Test 17:        1.000000ms      3.000000ms
+Test 18:        1.000000ms      3.000000ms
+Test 19:        1.000000ms      4.000000ms
+
+AVERAGE RUNTIME: 1.000000ms 3.300000ms
+
+Testing exponent 2^24
+
+RUNTIME for 2^24...
+
+                ASSEMBLY        C
+Test 0:         18.000000ms     53.000000ms
+Test 1:         19.000000ms     52.000000ms
+Test 2:         21.000000ms     54.000000ms
+Test 3:         20.000000ms     54.000000ms
+Test 4:         19.000000ms     52.000000ms
+Test 5:         16.000000ms     52.000000ms
+Test 6:         15.000000ms     52.000000ms
+Test 7:         17.000000ms     52.000000ms
+Test 8:         16.000000ms     52.000000ms
+Test 9:         15.000000ms     53.000000ms
+Test 10:        15.000000ms     52.000000ms
+Test 11:        16.000000ms     51.000000ms
+Test 12:        16.000000ms     52.000000ms
+Test 13:        16.000000ms     52.000000ms
+Test 14:        15.000000ms     52.000000ms
+Test 15:        16.000000ms     51.000000ms
+Test 16:        16.000000ms     51.000000ms
+Test 17:        16.000000ms     51.000000ms
+Test 18:        16.000000ms     51.000000ms
+Test 19:        16.000000ms     51.000000ms
+
+AVERAGE RUNTIME: 16.750000ms 52.165000ms
+
+Testing exponent 2^28
+
+RUNTIME for 2^28...
+
+                ASSEMBLY        C
+Test 0:         271.000000ms    831.000000ms
+Test 1:         251.000000ms    829.000000ms
+Test 2:         272.000000ms    836.000000ms
+Test 3:         248.000000ms    832.000000ms
+Test 4:         249.000000ms    830.000000ms
+Test 5:         252.000000ms    828.000000ms
+Test 6:         249.000000ms    829.000000ms
+Test 7:         247.000000ms    830.000000ms
+Test 8:         249.000000ms    828.000000ms
+Test 9:         246.000000ms    831.000000ms
+Test 10:        248.000000ms    837.000000ms
+Test 11:        245.000000ms    830.000000ms
+Test 12:        246.000000ms    833.000000ms
+Test 13:        247.000000ms    828.000000ms
+Test 14:        246.000000ms    827.000000ms
+Test 15:        248.000000ms    830.000000ms
+Test 16:        247.000000ms    830.000000ms
+Test 17:        247.000000ms    827.000000ms
+Test 18:        245.000000ms    829.000000ms
+Test 19:        247.000000ms    830.000000ms
+
+AVERAGE RUNTIME: 250.837500ms 832.858250ms
