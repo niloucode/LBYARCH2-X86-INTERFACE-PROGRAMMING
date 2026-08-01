@@ -76,9 +76,9 @@ int main() {
         count++;
     }
 
-    asm_kernel(n, vectorA, vectorB, sdot);
+    asm_kernel(n, vectorA, vectorB, &sdot);
 
-    printf("Dot Product: %f\n", *sdot);
+    printf("Dot Product: %f\n", sdot);
 
     free(vectorA);
     free(vectorB);
@@ -107,11 +107,10 @@ void testProgram() {
         int n = 1;
         double* vectorA = NULL;
         double* vectorB = NULL;
-        double* sdot = NULL;
+        double sdot = 0.0;
 
         asmRuntimes = (double*)malloc(iterations * sizeof(*asmRuntimes));
         cRuntimes = (double*)malloc(iterations * sizeof(*cRuntimes));
-        sdot = (double*)malloc(sizeof(*sdot));
 
         for (int j = 0; j < exponentArray[i];j++)
         {
@@ -131,8 +130,8 @@ void testProgram() {
         for (int j = 0; j < iterations; j++)
         {
             //printf("ITERATION %d:\n", j + 1);
-            asmRuntimes[j] = getAsmRuntime(n,vectorA,vectorB, sdot) * 1000;
-            cRuntimes[j] = getCRuntime(n, vectorA, vectorB, sdot) * 1000;
+            asmRuntimes[j] = getAsmRuntime(n,vectorA,vectorB, &sdot) * 1000;
+            cRuntimes[j] = getCRuntime(n, vectorA, vectorB, &sdot) * 1000;
             //printf("RUNTIME: %7fms %7fms\n\n", asmRuntimes[j], cRuntimes[j]);
         }
 
@@ -152,7 +151,6 @@ void testProgram() {
 
         free(vectorA);
         free(vectorB);
-        free(sdot);
 
         free(asmRuntimes);
         free(cRuntimes);
