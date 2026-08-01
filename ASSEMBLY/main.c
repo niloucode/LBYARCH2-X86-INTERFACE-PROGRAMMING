@@ -12,6 +12,9 @@ extern void c_kernel(int n, double vA[], double vB[], double* sdot);
 double getAsmRuntime(int n, double* vectorA, double* vectorB, double* sdot);
 double getCRuntime(int n, double* vectorA, double* vectorB, double* sdot);
 
+const MAX_VALUE = 100.0;
+const MIN_VALUE = -100.0;
+
 // since C's "release" is extremely optimized, we need to use a buffer variable like this to keep the result,
 // and keep the timer counting in "release" mode.
 volatile double prevent_optimization;
@@ -120,10 +123,12 @@ void testProgram() {
         vectorA = (double*)malloc(n * sizeof(*vectorA));
         vectorB = (double*)malloc(n * sizeof(*vectorB));
 
+        srand(time(NULL));
+
         for (int j = 0; j < n; j++)
         {
-            vectorA[j] = 1.0;
-            vectorB[j] = 2.0;
+            vectorA[j] = MIN_VALUE + ((double)rand() / RAND_MAX) * (MAX_VALUE - MIN_VALUE);
+            vectorB[j] = MIN_VALUE + ((double)rand() / RAND_MAX) * (MAX_VALUE - MIN_VALUE);
         }
 
 

@@ -27,7 +27,4 @@
       <Filter>Source Files</Filter>
     </CustomBuild>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="test-results.txt" />
-  </ItemGroup>
 </Project>
