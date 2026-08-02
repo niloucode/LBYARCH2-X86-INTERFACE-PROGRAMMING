@@ -1,96 +1,10 @@
 # Comparison of Execution Times
 
-### RUNTIME for $2^{20}$
+### Comparative Execution Time
 
-| TEST # | ASSEMBLY DEBUG | C DEBUG | ASSEMBLY RELEASE | C RELEASE |
-| --- | --- | --- | --- | --- |
-| 0 | 2.000000ms | 3.000000ms | 2.000000ms | 1.000000ms |
-| 1 | 2.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 2 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 3 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 4 | 1.000000ms | 4.000000ms | 1.000000ms | 1.000000ms |
-| 5 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 6 | 2.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 7 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 8 | 2.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 9 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 10 | 1.000000ms | 4.000000ms | 1.000000ms | 1.000000ms |
-| 11 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 12 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 13 | 2.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 14 | 2.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 15 | 1.000000ms | 3.000000ms | 1.000000ms | 0.000000ms |
-| 16 | 2.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 17 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
-| 18 | 1.000000ms | 4.000000ms | 1.000000ms | 1.000000ms |
-| 19 | 1.000000ms | 3.000000ms | 1.000000ms | 1.000000ms |
+The table below summarizes the average execution times of 20 test runs for vector sizes $n = 2^{20}$, $2^{24}$, and $2^{28}$:
+(You may view the raw [debug](ASSEMBLY/debug-test-results.txt) and [release](ASSEMBLY/release-test-results.txt) times)
 
-- ASSEMBLY DEBUG AVERAGE RUNTIME: 1.350000ms 
-- C DEBUG AVERAGE RUNTIME: 3.150000ms
-- ASSEMBLY RELEASE AVERAGE RUNTIME: 1.050000ms 
-- C RELEASE RUNTIME: 0.950000ms
-
-### RUNTIME for $2^{24}$
-
-| TEST # | ASSEMBLY DEBUG | C DEBUG | ASSEMBLY RELEASE | C RELEASE |
-| --- | --- | --- | --- | --- |
-| 0 | 16.000000ms | 54.000000ms | 21.000000ms | 18.000000ms |
-| 1 | 15.000000ms | 52.000000ms | 29.000000ms | 30.000000ms |
-| 2 | 16.000000ms | 52.000000ms | 26.000000ms | 26.000000ms |
-| 3 | 15.000000ms | 52.000000ms | 22.000000ms | 19.000000ms |
-| 4 | 16.000000ms | 51.000000ms | 18.000000ms | 23.000000ms |
-| 5 | 17.000000ms | 52.000000ms | 21.000000ms | 21.000000ms |
-| 6 | 16.000000ms | 52.000000ms | 20.000000ms | 16.000000ms |
-| 7 | 16.000000ms | 53.000000ms | 17.000000ms | 18.000000ms |
-| 8 | 15.000000ms | 52.000000ms | 19.000000ms | 21.000000ms |
-| 9 | 15.000000ms | 53.000000ms | 23.000000ms | 20.000000ms |
-| 10 | 15.000000ms | 52.000000ms | 20.000000ms | 17.000000ms |
-| 11 | 16.000000ms | 52.000000ms | 17.000000ms | 16.000000ms |
-| 12 | 16.000000ms | 52.000000ms | 16.000000ms | 17.000000ms |
-| 13 | 16.000000ms | 52.000000ms | 19.000000ms | 17.000000ms |
-| 14 | 15.000000ms | 52.000000ms | 19.000000ms | 18.000000ms |
-| 15 | 16.000000ms | 54.000000ms | 17.000000ms | 16.000000ms |
-| 16 | 23.000000ms | 51.000000ms | 16.000000ms | 18.000000ms |
-| 17 | 16.000000ms | 53.000000ms | 18.000000ms | 20.000000ms |
-| 18 | 16.000000ms | 52.000000ms | 19.000000ms | 17.000000ms |
-| 19 | 16.000000ms | 52.000000ms | 17.000000ms | 19.000000ms |
-
-- ASSEMBLY DEBUG AVERAGE RUNTIME: 16.167500ms
-- C DEBUG AVERAGE RUNTIME: 52.407500ms
-- ASSEMBLY RELEASE AVERAGE RUNTIME: 19.752500ms
-- C RELEASE RUNTIME: 19.397500ms
-
-### RUNTIME for $2^{28}$
-
-| TEST # | ASSEMBLY DEBUG | C DEBUG | ASSEMBLY RELEASE | C RELEASE |
-| --- | --- | --- | --- | --- |
-| 0 | 274.000000ms | 847.000000ms | 248.000000ms | 251.000000ms |
-| 1 | 272.000000ms | 844.000000ms | 250.000000ms | 252.000000ms |
-| 2 | 284.000000ms | 840.000000ms | 247.000000ms | 250.000000ms |
-| 3 | 292.000000ms | 840.000000ms | 252.000000ms | 263.000000ms |
-| 4 | 265.000000ms | 835.000000ms | 247.000000ms | 249.000000ms |
-| 5 | 270.000000ms | 837.000000ms | 250.000000ms | 251.000000ms |
-| 6 | 267.000000ms | 848.000000ms | 251.000000ms | 253.000000ms |
-| 7 | 336.000000ms | 867.000000ms | 250.000000ms | 250.000000ms |
-| 8 | 304.000000ms | 851.000000ms | 250.000000ms | 248.000000ms |
-| 9 | 287.000000ms | 851.000000ms | 249.000000ms | 251.000000ms |
-| 10 | 288.000000ms | 855.000000ms | 248.000000ms | 254.000000ms |
-| 11 | 309.000000ms | 839.000000ms | 248.000000ms | 251.000000ms |
-| 12 | 283.000000ms | 845.000000ms | 247.000000ms | 251.000000ms |
-| 13 | 303.000000ms | 868.000000ms | 248.000000ms | 249.000000ms |
-| 14 | 330.000000ms | 867.000000ms | 246.000000ms | 250.000000ms |
-| 15 | 305.000000ms | 851.000000ms | 248.000000ms | 253.000000ms |
-| 16 | 277.000000ms | 858.000000ms | 247.000000ms | 251.000000ms |
-| 17 | 285.000000ms | 856.000000ms | 249.000000ms | 252.000000ms |
-| 18 | 312.000000ms | 856.000000ms | 247.000000ms | 249.000000ms |
-| 19 | 290.000000ms | 850.000000ms | 247.000000ms | 253.000000ms |
-
-- ASSEMBLY DEBUG AVERAGE RUNTIME: 292.458375ms
-- C DEBUG AVERAGE RUNTIME: 852.870375ms
-- ASSEMBLY RELEASE AVERAGE RUNTIME: 249.437625ms
-- C RELEASE RUNTIME: 252.519875ms
-
-### Compiled Average Runtimes
 | VECTOR SIZE (n) | ASSEMBLY DEBUG | C DEBUG | ASSEMBLY RELEASE | C RELEASE |
 | --- | --- | --- | --- | --- |
 | $2^{20}$ | 1.35ms | 3.15ms | 1.05ms | 0.95ms |
@@ -99,7 +13,11 @@
 
 # Analysis
 
-Based on what can be observed in the average runtimes, we first noticed that the Debug build of Assembly is significantly faster than C's. With the vector size of $2^{20}$ being ~2.33x faster, $2^{24}$ being ~3.24x faster, and $2^{28}$ being ~2.92x faster. In Debug build mode, the C compiler doesn't optimize speed
+Based on what can be observed in the average execution times, we first noticed that the Debug build of Assembly is significantly faster than C's. With the vector size of $2^{20}$ being ~2.33x faster, $2^{24}$ being ~3.24x faster, and $2^{28}$ being ~2.92x faster. In Debug build mode, the C compiler doesn't optimize speed and uses diagnostic checks to ensure traceability during development. It avoids reorganizing instructions so that each state could be inspected at that specific point, relying on stack memory, which slows execution; while Assembly directly accesses the registers, which minimizes its access time.
+
+Second, the execution times of C in Release build mode are barely faster or almost the same (but slightly slower) as Assembly. Release mode utilizes optimizations, as C now uses registers directly, which does the same as Assembly, explaining why their execution times are very similar. 
+
+Lastly are the execution times of each C and Assembly kernel. Assembly's execution speed fluctuates between Debug and Release, which means regardless of the build use, Assembly is much more stable compared to that of C, whose Debug execution time is approximately 3x slower than Release builds' execution.
 
 
 # Screenshots for Correctness Check
