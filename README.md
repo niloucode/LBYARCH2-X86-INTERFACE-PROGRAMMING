@@ -16,9 +16,9 @@ The table below summarizes the average execution times of 20 test runs for vecto
 
 Based on what can be observed in the average execution times, we first noticed that the Debug build of Assembly is significantly faster than C's. With the vector size of $2^{20}$ being ~2.33x faster, $2^{24}$ being ~3.24x faster, and $2^{28}$ being ~2.92x faster. In Debug build mode, the C compiler doesn't optimize speed and uses diagnostic checks to ensure traceability during development. It avoids reorganizing instructions so that each state could be inspected at that specific point, relying on stack memory, which slows execution; while Assembly directly accesses the registers, which minimizes its access time.
 
-Second, the execution times of C in Release build mode are barely faster or almost the same (but slightly slower) as Assembly. Release mode utilizes optimizations, as C now uses registers directly, which does the same as Assembly, explaining why their execution times are very similar. 
+Second, the execution times of C in Release build mode are barely faster or almost the same (but slightly slower) as Assembly. Release mode utilizes optimizations and allows C to store and compute commonly used variables in registers, eliminating the need to frequently access the main memory, explaining why execution times between C (in Release) and Assembly are very similar. 
 
-Lastly are the execution times of each C and Assembly kernel. Assembly's execution speed fluctuates between Debug and Release, which means regardless of the build use, Assembly is much more stable compared to that of C, whose Debug execution time is approximately 3x slower than Release builds' execution.
+Lastly are the execution times of each C and Assembly kernel. Assembly's execution speed is consistent between Debug and Release, which means regardless of the build use, Assembly is much more stable compared to that of C, whose Debug execution time is approximately 3x slower than Release builds' execution.
 
 
 # Screenshots for Correctness Check
