@@ -3,6 +3,7 @@
 ### Comparative Execution Time
 
 The table below summarizes the average execution times of 20 test runs for vector sizes $n = 2^{20}$, $2^{24}$, and $2^{28}$:
+
 (You may view the raw [debug](ASSEMBLY/debug-test-results.txt) and [release](ASSEMBLY/release-test-results.txt) times)
 
 | VECTOR SIZE (n) | ASSEMBLY DEBUG | C DEBUG | ASSEMBLY RELEASE | C RELEASE |
