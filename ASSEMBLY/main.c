@@ -164,7 +164,8 @@ void testProgram() {
         asmAvg /= iterations;
         cAvg /= iterations;
 
-        printf("\nAVERAGE RUNTIME: %7fms %7fms", asmAvg,cAvg);
+        printf("\nAVERAGE ASSEMBLY RUNTIME: %7fms", asmAvg);
+        printf("\nAVERAGE C RUNTIME: %7fms ", cAvg);
 
         free(vectorA);
         free(vectorB);
