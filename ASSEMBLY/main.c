@@ -98,9 +98,11 @@ void testProgram() {
     int exponents = sizeof(exponentArray)/sizeof(exponentArray[0]);
 
     double* asmRuntimes = NULL;
+	double* asmSdots = NULL;
     double asmAvg = 0.0;
 
     double* cRuntimes = NULL;
+	double* cSdots = NULL;
     double cAvg = 0.0;
 
     for (int i = 0; i < exponents; i++)
@@ -114,6 +116,8 @@ void testProgram() {
 
         asmRuntimes = (double*)malloc(iterations * sizeof(*asmRuntimes));
         cRuntimes = (double*)malloc(iterations * sizeof(*cRuntimes));
+        asmSdots = (double*)malloc(iterations * sizeof(*asmRuntimes));
+        cSdots = (double*)malloc(iterations * sizeof(*cRuntimes));
 
         for (int j = 0; j < exponentArray[i];j++)
         {
@@ -136,16 +140,24 @@ void testProgram() {
         {
             //printf("ITERATION %d:\n", j + 1);
             asmRuntimes[j] = getAsmRuntime(n,vectorA,vectorB, &sdot) * 1000;
+            asmSdots[j] = sdot;
             cRuntimes[j] = getCRuntime(n, vectorA, vectorB, &sdot) * 1000;
+            cSdots[j] = sdot;
             //printf("RUNTIME: %7fms %7fms\n\n", asmRuntimes[j], cRuntimes[j]);
         }
 
 
-        printf("\n\RUNTIME for 2^%d...\n\n",exponentArray[i]);
-        printf("\t\tASSEMBLY\tC\n");
+        //printf("\n\RUNTIME for 2^%d...\n\n",exponentArray[i]);
+        printf("\t\tASSEMBLY sDot\tASSEMBLY Runtime\tC sDot\tC Runtime\tResult\n");
         for (int j = 0; j < iterations; j++)
         {
-            printf("Test %d: \t%7fms\t%7fms\n", j, asmRuntimes[j], cRuntimes[j]);
+            printf("Test %d: \t%7f\t%7fms\t%7f\t%7fms\t", j, asmSdots[j], asmRuntimes[j], cSdots[j], cRuntimes[j]);
+			if (asmSdots[j] == cSdots[j]) {
+				printf("PASS\n");
+			}
+			else {
+				printf("FAIL\n");
+			}
             asmAvg += asmRuntimes[j];
             cAvg += cRuntimes[j];
         }
@@ -159,6 +171,8 @@ void testProgram() {
 
         free(asmRuntimes);
         free(cRuntimes);
+        free(asmSdots);
+        free(cSdots);
     }
 }
 
